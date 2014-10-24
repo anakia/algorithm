@@ -1,0 +1,21 @@
+apply plugin:'java'
+apply plugin:'eclipse'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.springframework:spring-context:4.0.5.RELEASE'
+}
+
+task copyJars(type: Copy) {
+  from configurations.runtime
+  into 'lib'
+}
+
+jar {
+manifest{
+    attributes 'Implementation-Titile': 'demo gradle', 'Implementation-Version':1.0
+    }
+}
